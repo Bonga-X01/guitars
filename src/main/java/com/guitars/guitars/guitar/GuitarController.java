@@ -1,12 +1,8 @@
 package com.guitars.guitars.guitar;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -43,5 +39,30 @@ public class GuitarController {
         matchingGuitars.forEach(System.out::println);
 
         return matchingGuitars;
+    }
+    @GetMapping("/guitars/getAll")
+    public List<Guitar> getAllGuitars() {
+        List<Guitar> matchingGuitars;
+
+        //access the service and use repository to find all
+        matchingGuitars = guitarService.getAllGuitars();
+        System.out.println("from controller");
+
+        return matchingGuitars;
+    }
+    @PutMapping("/guitars/update/{id}")
+    public void updateGuitar(@RequestParam(name = "builder") String builder,
+                             @RequestParam(name = "model") String model,
+                             @RequestParam(name = "type") String type,
+                             @RequestParam(name = "backWood") String backWood,
+                             @RequestParam(name = "topWood") String topWood,
+                             @PathVariable int id
+    ){
+        GuitarSpec guitarSpec = new GuitarSpec(builder, model, type, backWood, topWood);
+        guitarService.updateGuitar(guitarSpec, id);
+    }
+    @DeleteMapping("/guitars/delete/{id}")
+    public void deleteGuitar(@PathVariable int id) {
+        guitarService.deleteGuitar(id);
     }
 }

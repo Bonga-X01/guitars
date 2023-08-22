@@ -11,6 +11,10 @@ public class Guitar {
     //comments
 
 
+    public Guitar() {
+        
+    }
+
     public Guitar(String serialNumber, String builder, String model, String type, String backWood, String topWood, String price) {
         this.serialNumber = serialNumber;
         this.builder = builder;

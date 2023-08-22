@@ -9,15 +9,22 @@ import java.util.List;
 @Service
 public class GuitarService {
     @Autowired
-    JdbcTemplate jdbcTemplate;
-    @Autowired
     GuitarRepository guitarRepository;
 
     //addGuitar
     public void addGuitar(Guitar guitar) {
-        guitarRepository.createGuitar(jdbcTemplate, guitar);
+        guitarRepository.createGuitar(guitar);
     }
     public List<Guitar> searchGuitars(GuitarSpec guitarSpec) {
-        return guitarRepository.readGuitarsWithSpec(jdbcTemplate, guitarSpec);
+        return guitarRepository.readGuitarsWithSpec(guitarSpec);
+    }
+    public List<Guitar> getAllGuitars() {
+        return guitarRepository.readAll();
+    }
+    public int updateGuitar(GuitarSpec guitarSpec, int id) {
+        return guitarRepository.updateGuitar(guitarSpec, id);
+    }
+    public int deleteGuitar(int id) {
+        return guitarRepository.deleteGuitar(id);
     }
 }
