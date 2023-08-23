@@ -54,4 +54,15 @@ public class GuitarSpec {
     public void setTopWood(String topWood) {
         this.topWood = topWood;
     }
+
+    @Override
+    public String toString() {
+        return "GuitarSpec{" +
+                "builder='" + builder + '\'' +
+                ", model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", backWood='" + backWood + '\'' +
+                ", topWood='" + topWood + '\'' +
+                '}';
+    }
 }

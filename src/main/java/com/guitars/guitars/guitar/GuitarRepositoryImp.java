@@ -23,11 +23,11 @@ public class GuitarRepositoryImp implements GuitarRepository{
                         "VALUES (null, ?, ?, ?, ?, ?, ?, ?)",
                 guitar.getSerialNumber(),
                 guitar.getPrice(),
-                guitar.getBuilder(),
-                guitar.getModel(),
-                guitar.getType(),
-                guitar.getBackWood(),
-                guitar.getTopWood()
+                guitar.getSpec().getBuilder(),
+                guitar.getSpec().getModel(),
+                guitar.getSpec().getType(),
+                guitar.getSpec().getBackWood(),
+                guitar.getSpec().getTopWood()
 
         );
         log.info("Completed insert \n" + guitar);
@@ -42,12 +42,12 @@ public class GuitarRepositoryImp implements GuitarRepository{
                 new Object[] { guitarSpec.getBuilder(), guitarSpec.getModel(), guitarSpec.getType(), guitarSpec.getBackWood(), guitarSpec.getTopWood() },
                 (rs, rowNum) -> new Guitar(rs.getInt("id"),
                         rs.getString("serial_number"),
-                        rs.getString("price"),
                         rs.getString("builder"),
                         rs.getString("model"),
                         rs.getString("type"),
                         rs.getString("back_wood"),
-                        rs.getString("top_wood"))
+                        rs.getString("top_wood"),
+                        rs.getString("price"))
         ).forEach(guitar ->{
             log.info("found: "+ guitar);
             matchingGuitars.add(guitar);

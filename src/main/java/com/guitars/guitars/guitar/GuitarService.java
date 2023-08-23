@@ -1,7 +1,6 @@
 package com.guitars.guitars.guitar;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,10 +20,10 @@ public class GuitarService {
     public List<Guitar> getAllGuitars() {
         return guitarRepository.readAll();
     }
-    public int updateGuitar(GuitarSpec guitarSpec, int id) {
-        return guitarRepository.updateGuitar(guitarSpec, id);
+    public void updateGuitar(GuitarSpec guitarSpec, int id) {
+        guitarRepository.updateGuitar(guitarSpec, id);
     }
-    public int deleteGuitar(int id) {
-        return guitarRepository.deleteGuitar(id);
+    public void deleteGuitar(int id) {
+        guitarRepository.deleteGuitar(id);
     }
 }
