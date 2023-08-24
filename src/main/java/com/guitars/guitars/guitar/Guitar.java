@@ -8,21 +8,18 @@ public class Guitar {
     private String serialNumber;
     private String price;
     GuitarSpec spec;
-    //seller
-    //comments
 
-
-    public Guitar(String serialNumber, String builder, String model, String type, String backWood, String topWood, String price) {
+    public Guitar(String serialNumber, String builder, String model, String type, String backWood, String topWood, String price, int numString) {
         this.serialNumber = serialNumber;
         this.price = price;
-        this.spec = new GuitarSpec(builder, model, type, backWood, topWood);
+        this.spec = new GuitarSpec(builder, model, type, backWood, topWood, numString);
     }
 
-    public Guitar(int id, String serialNumber, String builder, String model, String type, String backWood, String topWood, String price) {
+    public Guitar(int id, String serialNumber, String builder, String model, String type, String backWood, String topWood, String price, int numString) {
         this.id = id;
         this.serialNumber = serialNumber;
         this.price = price;
-        this.spec = new GuitarSpec(builder, model, type, backWood, topWood);
+        this.spec = new GuitarSpec(builder, model, type, backWood, topWood, numString);
     }
 
     public int getId() {

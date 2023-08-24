@@ -19,15 +19,16 @@ public class GuitarRepositoryImp implements GuitarRepository{
         log.info("Inserting guitar");
         jdbcTemplate.update(
                 "INSERT INTO inventory" +
-                        "(id, serial_number, price, builder, model, type, back_wood, top_wood)" +
-                        "VALUES (null, ?, ?, ?, ?, ?, ?, ?)",
+                        "(id, serial_number, price, builder, model, type, back_wood, top_wood, num_strings)" +
+                        "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)",
                 guitar.getSerialNumber(),
                 guitar.getPrice(),
                 guitar.getSpec().getBuilder(),
                 guitar.getSpec().getModel(),
                 guitar.getSpec().getType(),
                 guitar.getSpec().getBackWood(),
-                guitar.getSpec().getTopWood()
+                guitar.getSpec().getTopWood(),
+                guitar.getSpec().getNumStrings()
 
         );
         log.info("Completed insert \n" + guitar);
@@ -38,8 +39,8 @@ public class GuitarRepositoryImp implements GuitarRepository{
         List<Guitar> matchingGuitars = new ArrayList<>();
         log.info("Querying for matching guitars");
         jdbcTemplate.query(
-                "SELECT * FROM inventory WHERE builder = ? OR model = ? OR type = ? OR back_wood = ? OR top_wood = ?",
-                new Object[] { guitarSpec.getBuilder(), guitarSpec.getModel(), guitarSpec.getType(), guitarSpec.getBackWood(), guitarSpec.getTopWood() },
+                "SELECT * FROM inventory WHERE builder = ? OR model = ? OR type = ? OR back_wood = ? OR top_wood = ? OR num_strings = ?",
+                new Object[] { guitarSpec.getBuilder(), guitarSpec.getModel(), guitarSpec.getType(), guitarSpec.getBackWood(), guitarSpec.getTopWood(), guitarSpec.getNumStrings() },
                 (rs, rowNum) -> new Guitar(rs.getInt("id"),
                         rs.getString("serial_number"),
                         rs.getString("builder"),
@@ -47,7 +48,8 @@ public class GuitarRepositoryImp implements GuitarRepository{
                         rs.getString("type"),
                         rs.getString("back_wood"),
                         rs.getString("top_wood"),
-                        rs.getString("price"))
+                        rs.getString("price"),
+                        rs.getInt("num_strings"))
         ).forEach(guitar ->{
             log.info("found: "+ guitar);
             matchingGuitars.add(guitar);
@@ -65,12 +67,13 @@ public class GuitarRepositoryImp implements GuitarRepository{
                 "SELECT * FROM inventory",
                 (rs, rowNum) -> new Guitar(rs.getInt("id"),
                         rs.getString("serial_number"),
-                        rs.getString("price"),
                         rs.getString("builder"),
                         rs.getString("model"),
                         rs.getString("type"),
                         rs.getString("back_wood"),
-                        rs.getString("top_wood"))
+                        rs.getString("top_wood"),
+                        rs.getString("price"),
+                        rs.getInt("num_strings"))
         ).forEach(guitar ->{
             log.info("found: "+ guitar);
             matchingGuitars.add(guitar);
@@ -79,14 +82,14 @@ public class GuitarRepositoryImp implements GuitarRepository{
     }
 
     @Override
-    public int updateGuitar(GuitarSpec guitarSpec, int id) {
-        return jdbcTemplate.update(
-                "UPDATE inventory SET builder = ?, model = ?, type = ?, back_wood = ?, top_wood = ? WHERE id = ?",
-                guitarSpec.getBuilder(), guitarSpec.getModel(), guitarSpec.getType(), guitarSpec.getBackWood(), guitarSpec.getTopWood(), id);
+    public void updateGuitar(GuitarSpec guitarSpec, int id) {
+        jdbcTemplate.update(
+                "UPDATE inventory SET builder = ?, model = ?, type = ?, back_wood = ?, top_wood = ?, num_strings = ? WHERE id = ?",
+                guitarSpec.getBuilder(), guitarSpec.getModel(), guitarSpec.getType(), guitarSpec.getBackWood(), guitarSpec.getTopWood(), guitarSpec.getNumStrings(), id);
     }
 
     @Override
-    public int deleteGuitar(int id) {
-        return jdbcTemplate.update("DELETE FROM inventory WHERE id=?", id);
+    public void deleteGuitar(int id) {
+        jdbcTemplate.update("DELETE FROM inventory WHERE id=?", id);
     }
 }

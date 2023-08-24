@@ -16,10 +16,11 @@ public class GuitarController {
                           @RequestParam(name = "type") String type,
                           @RequestParam(name = "backWood") String backWood,
                           @RequestParam(name = "topWood") String topWood,
-                          @RequestParam(name = "price") String price
+                          @RequestParam(name = "price") String price,
+                          @RequestParam(name = "numStrings") int numStrings
                           ) {
         //create a new guitar object with properties from client
-        Guitar newGuitar = new Guitar(serialNumber, builder, model, type, backWood, topWood, price);
+        Guitar newGuitar = new Guitar(serialNumber, builder, model, type, backWood, topWood, price, numStrings);
         //access the service and use repository to save new guitar
         guitarService.addGuitar(newGuitar);
     }
@@ -28,11 +29,12 @@ public class GuitarController {
                           @RequestParam(name = "model") String model,
                           @RequestParam(name = "type") String type,
                           @RequestParam(name = "backWood") String backWood,
-                          @RequestParam(name = "topWood") String topWood
+                          @RequestParam(name = "topWood") String topWood,
+                          @RequestParam(name = "numStrings") int numStrings
     ) {
         List<Guitar> matchingGuitars;
         //create a new SearchGuitar object with request Param
-        GuitarSpec guitarSpec = new GuitarSpec(builder, model, type, backWood, topWood);
+        GuitarSpec guitarSpec = new GuitarSpec(builder, model, type, backWood, topWood, numStrings);
         //access the service and use repository to find matches
         matchingGuitars = guitarService.searchGuitars(guitarSpec);
         System.out.println("from controller");
@@ -56,9 +58,10 @@ public class GuitarController {
                              @RequestParam(name = "type") String type,
                              @RequestParam(name = "backWood") String backWood,
                              @RequestParam(name = "topWood") String topWood,
+                             @RequestParam(name = "numStrings") int numStrings,
                              @PathVariable int id
     ){
-        GuitarSpec guitarSpec = new GuitarSpec(builder, model, type, backWood, topWood);
+        GuitarSpec guitarSpec = new GuitarSpec(builder, model, type, backWood, topWood, numStrings);
         guitarService.updateGuitar(guitarSpec, id);
     }
     @DeleteMapping("/guitars/delete/{id}")

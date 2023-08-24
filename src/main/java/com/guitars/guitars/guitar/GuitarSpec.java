@@ -6,13 +6,19 @@ public class GuitarSpec {
     private String type;
     private String backWood;
     private String topWood;
+    private int numStrings;
 
-    public GuitarSpec(String builder, String model, String type, String backWood, String topWood) {
+    public GuitarSpec(String builder, String model, String type, String backWood, String topWood, int numStrings) {
         this.builder = builder;
         this.model = model;
         this.type = type;
         this.backWood = backWood;
         this.topWood = topWood;
+        this.numStrings = numStrings;
+    }
+
+    public int getNumStrings() {
+        return numStrings;
     }
 
     public String getBuilder() {
