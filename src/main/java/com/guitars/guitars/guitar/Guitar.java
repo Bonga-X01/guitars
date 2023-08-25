@@ -1,12 +1,9 @@
 package com.guitars.guitars.guitar;
 
+import com.guitars.guitars.instrument.Instrument;
 import org.springframework.data.annotation.Id;
 
-public class Guitar {
-    @Id
-    private int id;
-    private String serialNumber;
-    private String price;
+public class Guitar extends Instrument {
     GuitarSpec spec;
 
     public Guitar(String serialNumber, String builder, String model, String type, String backWood, String topWood, String price, int numString) {
@@ -20,31 +17,6 @@ public class Guitar {
         this.serialNumber = serialNumber;
         this.price = price;
         this.spec = new GuitarSpec(builder, model, type, backWood, topWood, numString);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
     }
 
     public GuitarSpec getSpec() {

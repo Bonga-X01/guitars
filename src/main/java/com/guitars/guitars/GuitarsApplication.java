@@ -12,8 +12,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @SpringBootApplication
 public class GuitarsApplication implements CommandLineRunner{
 	private static final Logger log = LoggerFactory.getLogger(GuitarsApplication.class);
-    @Autowired
-    JdbcTemplate jdbcTemplate;
 
 	public static void main(String[] args) {
 		SpringApplication.run(GuitarsApplication.class, args);
