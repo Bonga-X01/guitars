@@ -19,8 +19,10 @@ public class GuitarController {
                           @RequestParam(name = "price") String price,
                           @RequestParam(name = "numStrings") int numStrings
                           ) {
-        //create a new guitar object with properties from client
-        Guitar newGuitar = new Guitar(serialNumber, builder, model, type, backWood, topWood, price, numStrings);
+        //create a new guitarSpec object with properties from client
+        GuitarSpec spec = new GuitarSpec(builder, model, type, backWood, topWood, numStrings);
+        //create a new guitar object with guitarSpec object
+        Guitar newGuitar = new Guitar(serialNumber, price, spec);
         //access the service and use repository to save new guitar
         guitarService.addGuitar(newGuitar);
     }

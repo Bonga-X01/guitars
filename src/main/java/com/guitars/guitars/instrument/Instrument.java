@@ -7,6 +7,19 @@ public abstract class Instrument {
     protected int id;
     protected String serialNumber;
     protected String price;
+    protected InstrumentSpec instrumentSpec;
+
+    public Instrument(String serialNumber, String price, InstrumentSpec instrumentSpec) {
+        this.serialNumber = serialNumber;
+        this.price = price;
+        this.instrumentSpec = instrumentSpec;
+    }
+    public Instrument(int id, String serialNumber, String price, InstrumentSpec instrumentSpec) {
+        this.id = id;
+        this.serialNumber = serialNumber;
+        this.price = price;
+        this.instrumentSpec = instrumentSpec;
+    }
 
     public String getSerialNumber() {
         return serialNumber;
