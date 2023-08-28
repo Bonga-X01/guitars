@@ -56,7 +56,6 @@ public class GuitarRepositoryImp implements GuitarRepository{
         });
         return matchingGuitars;
     }
-
     @Override
     public List<Guitar> readAll() {
 
@@ -80,14 +79,12 @@ public class GuitarRepositoryImp implements GuitarRepository{
         });
         return matchingGuitars;
     }
-
     @Override
     public void updateGuitar(GuitarSpec guitarSpec, int id) {
         jdbcTemplate.update(
                 "UPDATE inventory SET builder = ?, model = ?, type = ?, back_wood = ?, top_wood = ?, num_strings = ? WHERE id = ?",
                 guitarSpec.getBuilder(), guitarSpec.getModel(), guitarSpec.getType(), guitarSpec.getBackWood(), guitarSpec.getTopWood(), guitarSpec.getNumStrings(), id);
     }
-
     @Override
     public void deleteGuitar(int id) {
         jdbcTemplate.update("DELETE FROM inventory WHERE id=?", id);
