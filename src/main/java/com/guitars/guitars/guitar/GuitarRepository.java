@@ -1,5 +1,7 @@
 package com.guitars.guitars.guitar;
 
+import com.guitars.guitars.instrument.InstrumentRepository;
+
 import java.util.List;
 
 public interface GuitarRepository {

@@ -10,6 +10,7 @@ public abstract class Instrument {
     protected InstrumentSpec instrumentSpec;
 
     public Instrument(String serialNumber, String price, InstrumentSpec instrumentSpec) {
+        System.err.println(instrumentSpec);
         this.serialNumber = serialNumber;
         this.price = price;
         this.instrumentSpec = instrumentSpec;

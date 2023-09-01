@@ -21,9 +21,5 @@ public class GuitarsApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		log.info("You're awesome!");
-        System.err.println("Add mandolin controller");
-        System.err.println("Add mandolin repo");
-        System.err.println("Add mandolinSpec");
-        System.err.println("Add mandolin service");
 	}
 }

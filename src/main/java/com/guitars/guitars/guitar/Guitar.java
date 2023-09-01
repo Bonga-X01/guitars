@@ -1,12 +1,15 @@
 package com.guitars.guitars.guitar;
 
 import com.guitars.guitars.instrument.Instrument;
+import com.guitars.guitars.instrument.InstrumentSpec;
 
 public class Guitar extends Instrument {
     GuitarSpec spec;
 
     public Guitar(String serialNumber, String price, GuitarSpec spec) {
         super(serialNumber, price, spec);
+        this.spec = spec;
+        System.err.println(spec + "from guitar constr");
     }
 
     public Guitar(int id, String serialNumber, String price, GuitarSpec spec) {

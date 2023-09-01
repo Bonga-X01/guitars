@@ -16,7 +16,8 @@ public class GuitarSpec extends InstrumentSpec {
     @Override
     public String toString() {
         return "GuitarSpec{" +
-                "builder='" + builder + '\'' +
+                "numStrings=" + numStrings +
+                ", builder='" + builder + '\'' +
                 ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
                 ", backWood='" + backWood + '\'' +
