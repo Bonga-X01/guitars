@@ -22,7 +22,7 @@ public class GuitarRepositoryImp implements GuitarRepository{
         jdbcTemplate.update(
                 "INSERT INTO inventory" +
                         "(id, serial_number, price, builder, model, type, back_wood, top_wood, num_strings)" +
-                        "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)",
+                        "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 guitar.getSerialNumber(),
                 guitar.getPrice(),
                 guitar.getSpec().getBuilder(),
@@ -30,7 +30,8 @@ public class GuitarRepositoryImp implements GuitarRepository{
                 guitar.getSpec().getType(),
                 guitar.getSpec().getBackWood(),
                 guitar.getSpec().getTopWood(),
-                guitar.getSpec().getNumStrings()
+                guitar.getSpec().getNumStrings(),
+                "Guitar"
 
         );
         log.info("Completed insert \n" + guitar);

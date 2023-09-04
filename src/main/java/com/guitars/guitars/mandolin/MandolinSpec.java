@@ -14,7 +14,7 @@ public class MandolinSpec extends InstrumentSpec {
 
     @Override
     public String toString() {
-        String s = "MandolinSpec{" +
+        return "MandolinSpec{" +
                 "style='" + style + '\'' +
                 ", builder='" + builder + '\'' +
                 ", model='" + model + '\'' +
@@ -22,6 +22,5 @@ public class MandolinSpec extends InstrumentSpec {
                 ", backWood='" + backWood + '\'' +
                 ", topWood='" + topWood + '\'' +
                 '}';
-        return s;
     }
 }

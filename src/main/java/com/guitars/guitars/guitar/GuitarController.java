@@ -1,8 +1,6 @@
 package com.guitars.guitars.guitar;
 
-import com.guitars.guitars.instrument.InstrumentRepository;
 import com.guitars.guitars.instrument.InstrumentService;
-import com.guitars.guitars.instrument.InstrumentSpec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,14 +23,8 @@ public class GuitarController {
                           @RequestParam(name = "price") String price,
                           @RequestParam(name = "numStrings") int numStrings
                           ) {
-        //create a new guitarSpec object with properties from client
         GuitarSpec spec = new GuitarSpec(builder, model, type, backWood, topWood, numStrings);
-        //create a new guitar object with guitarSpec object
-        System.err.println(spec + "from controller");
         Guitar newGuitar = new Guitar(serialNumber, price, spec);
-        System.err.println(newGuitar + "from controller");
-        //access the service and use repository to save new guitar
-        //guitarService.addGuitar(newGuitar);
         instrumentService.addInstrument(newGuitar);
     }
     @GetMapping("/guitars/get")

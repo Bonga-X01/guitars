@@ -10,12 +10,6 @@ public class GuitarService {
     @Autowired
     GuitarRepository guitarRepository;
 
-    //addGuitar
-    public void addGuitar(Guitar guitar) {
-        System.err.println("from service"+ guitar);
-        guitarRepository.createGuitar(guitar);
-        System.err.println(guitar);
-    }
     public List<Guitar> searchGuitars(GuitarSpec guitarSpec) {
         return guitarRepository.readGuitarsWithSpec(guitarSpec);
     }
