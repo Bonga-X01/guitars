@@ -38,11 +38,11 @@ public class GuitarRepositoryImp implements GuitarRepository{
     }
 
     @Override
-    public List<Guitar> readGuitarsWithSpec(GuitarSpec guitarSpec) {
-        List<Guitar> matchingGuitars = new ArrayList<>();
+    public List<Instrument> readGuitarsWithSpec(GuitarSpec guitarSpec) {
+        List<Instrument> matchingGuitars = new ArrayList<>();
         log.info("Querying for matching guitars");
         jdbcTemplate.query(
-                "SELECT * FROM inventory WHERE builder = ? OR model = ? OR type = ? OR back_wood = ? OR top_wood = ? OR num_strings = ?",
+                "SELECT * FROM inventory WHERE builder = ? OR model = ? OR type = ? OR back_wood = ? OR top_wood = ? OR num_strings = ? AND instrument = 'Guitar'",
                 new Object[] { guitarSpec.getBuilder(), guitarSpec.getModel(), guitarSpec.getType(), guitarSpec.getBackWood(), guitarSpec.getTopWood(), guitarSpec.getNumStrings() },
                 (rs, rowNum) -> new Guitar(rs.getInt("id"),
                         rs.getString("serial_number"),

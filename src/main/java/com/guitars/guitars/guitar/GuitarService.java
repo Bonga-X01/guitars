@@ -1,5 +1,6 @@
 package com.guitars.guitars.guitar;
 
+import com.guitars.guitars.instrument.Instrument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ public class GuitarService {
     @Autowired
     GuitarRepository guitarRepository;
 
-    public List<Guitar> searchGuitars(GuitarSpec guitarSpec) {
+    public List<Instrument> searchGuitars(GuitarSpec guitarSpec) {
         return guitarRepository.readGuitarsWithSpec(guitarSpec);
     }
     public List<Guitar> getAllGuitars() {
