@@ -39,13 +39,10 @@ public class MandolinController {
                                        @RequestParam(name = "style") String style
     ) {
         List<Instrument> matchingMandolins;
-        //create a new SearchGuitar object with request Param
         MandolinSpec mandolinSpec = new MandolinSpec(builder, model, type, backWood, topWood, style);
-        //access the service and use repository to find matches
         matchingMandolins = instrumentService.readMatching(mandolinSpec);
         System.out.println("from controller");
-        matchingMandolins.forEach(System.out::println);
-
+        matchingMandolins.forEach(System.err::println);
         return matchingMandolins;
     }
 }

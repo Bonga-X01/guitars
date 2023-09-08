@@ -42,7 +42,7 @@ public class GuitarRepositoryImp implements GuitarRepository{
         List<Instrument> matchingGuitars = new ArrayList<>();
         log.info("Querying for matching guitars");
         jdbcTemplate.query(
-                "SELECT * FROM inventory WHERE builder = ? OR model = ? OR type = ? OR back_wood = ? OR top_wood = ? OR num_strings = ? AND instrument = 'Guitar'",
+                "SELECT * FROM inventory WHERE (builder = ? OR model = ? OR type = ? OR back_wood = ? OR top_wood = ? OR num_strings = ?) AND (instrument = 'Guitar')",
                 new Object[] { guitarSpec.getBuilder(), guitarSpec.getModel(), guitarSpec.getType(), guitarSpec.getBackWood(), guitarSpec.getTopWood(), guitarSpec.getNumStrings() },
                 (rs, rowNum) -> new Guitar(rs.getInt("id"),
                         rs.getString("serial_number"),

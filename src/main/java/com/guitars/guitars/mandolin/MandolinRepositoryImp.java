@@ -40,7 +40,7 @@ public class MandolinRepositoryImp implements MandolinRepository {
         List<Mandolin> matchingMandolins = new ArrayList<>();
         log.info("querying for matching mandolin");
         jdbcTemplate.query(
-                "SELECT * FROM inventory WHERE builder = ? OR model = ? OR type = ? OR back_wood = ? OR top_wood = ? OR style = ? AND instrument = 'Mandolin'",
+                "SELECT * FROM inventory WHERE (builder = ? OR model = ? OR type = ? OR back_wood = ? OR top_wood = ? OR style = ?) AND (instrument = 'Mandolin')",
                 new Object[] { spec.getBuilder(), spec.getModel(), spec.getType(), spec.getBackWood(), spec.getTopWood(), spec.getStyle() },
                 (rs, rowNum) -> new Mandolin(rs.getInt("id"),
                         rs.getString("serial_number"),
