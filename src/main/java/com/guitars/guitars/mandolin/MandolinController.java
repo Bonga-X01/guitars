@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -44,5 +45,11 @@ public class MandolinController {
         System.out.println("from controller");
         matchingMandolins.forEach(System.err::println);
         return matchingMandolins;
+    }
+    @GetMapping("/inventory/mandolins/getAll")
+    public List<Instrument> getAllMandolins() {
+        List<Instrument> mandolins = new ArrayList<>();
+        mandolins.addAll(instrumentService.readAll("Mandolin"));
+        return mandolins;
     }
 }

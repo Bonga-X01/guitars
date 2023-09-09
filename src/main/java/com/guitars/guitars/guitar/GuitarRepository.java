@@ -9,7 +9,7 @@ public interface GuitarRepository {
 
     public void createGuitar(Guitar guitar);
     public List<Instrument> readGuitarsWithSpec(GuitarSpec guitarSpec);
-    public List<Guitar> readAll();
+    public List<Instrument> readAll();
     public void updateGuitar(GuitarSpec guitarSpec, int id);
     public void deleteGuitar(int id);
 }

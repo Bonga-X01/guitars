@@ -57,4 +57,26 @@ public class MandolinRepositoryImp implements MandolinRepository {
         });
         return matchingMandolins;
     }
+
+    @Override
+    public List<Mandolin> readAll() {
+        List<Mandolin> mandolins = new ArrayList<>();
+        log.info("Querying for all mandolins");
+        jdbcTemplate.query(
+                "SELECT * FROM inventory WHERE instrument = 'Mandolin'",
+                (rs, rowNum) -> new Mandolin(rs.getInt("id"),
+                        rs.getString("serial_number"),
+                        rs.getString("price"),
+                        new MandolinSpec(rs.getString("builder"),
+                                rs.getString("model"),
+                                rs.getString("type"),
+                                rs.getString("back_wood"),
+                                rs.getString("top_wood"),
+                                rs.getString("style")))
+        ).forEach(guitar ->{
+            log.info("found: "+ guitar);
+            mandolins.add(guitar);
+        });
+        return mandolins;
+    }
 }

@@ -47,13 +47,9 @@ public class GuitarController {
         return matchingGuitars;
     }
     @GetMapping("/guitars/getAll")
-    public List<Guitar> getAllGuitars() {
-        List<Guitar> matchingGuitars;
-
-        //access the service and use repository to find all
+    public List<Instrument> getAllGuitars() {
+        List<Instrument> matchingGuitars;
         matchingGuitars = guitarService.getAllGuitars();
-        System.out.println("from controller");
-
         return matchingGuitars;
     }
     @PutMapping("/guitars/update/{id}")

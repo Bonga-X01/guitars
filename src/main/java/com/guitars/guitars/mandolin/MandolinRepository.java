@@ -7,4 +7,5 @@ import java.util.List;
 public interface MandolinRepository {
     public void createMandolin(Mandolin mandolin);
     public List<Mandolin> readMandolinWithSpec(MandolinSpec spec);
+    public List<Mandolin> readAll();
 }

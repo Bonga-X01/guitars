@@ -34,4 +34,19 @@ public class InstrumentService {
         }
         return list;
     }
+    public List<Instrument> readAll() {
+        List<Instrument> list = new ArrayList<>();
+            list.addAll(mandolinRepository.readAll());
+            list.addAll(guitarRepository.readAll());
+        return list;
+    }
+    public List<Instrument> readAll(String instrument) {
+        List<Instrument> list = new ArrayList<>();
+        if(instrument.equals("Mandolin")) {
+            list.addAll(mandolinRepository.readAll());
+        } else if (instrument.equals("Guitar")) {
+            list.addAll(guitarRepository.readAll());
+        }
+        return list;
+    }
 }

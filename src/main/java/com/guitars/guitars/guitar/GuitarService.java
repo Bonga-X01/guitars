@@ -14,7 +14,7 @@ public class GuitarService {
     public List<Instrument> searchGuitars(GuitarSpec guitarSpec) {
         return guitarRepository.readGuitarsWithSpec(guitarSpec);
     }
-    public List<Guitar> getAllGuitars() {
+    public List<Instrument> getAllGuitars() {
         return guitarRepository.readAll();
     }
     public void updateGuitar(GuitarSpec guitarSpec, int id) {

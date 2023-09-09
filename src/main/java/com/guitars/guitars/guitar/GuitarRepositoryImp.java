@@ -60,13 +60,13 @@ public class GuitarRepositoryImp implements GuitarRepository{
         return matchingGuitars;
     }
     @Override
-    public List<Guitar> readAll() {
+    public List<Instrument> readAll() {
 
-        List<Guitar> matchingGuitars = new ArrayList<>();
+        List<Instrument> matchingGuitars = new ArrayList<>();
 
         log.info("Querying for all guitars");
         jdbcTemplate.query(
-                "SELECT * FROM inventory",
+                "SELECT * FROM inventory WHERE instrument = 'Guitar'",
                 (rs, rowNum) -> new Guitar(rs.getInt("id"),
                         rs.getString("serial_number"),
                         rs.getString("price"),
